@@ -19,6 +19,17 @@ sudo apt-get install -y \
     libinput-dev \
     libudev-dev  \
     libxkbcommon-dev
+    
+# Perform dry run and review envvar DOTNET_INSTALL_DIR
+curl -sSL https://dot.net/v1/dotnet-install.sh | bash /dev/stdin --version latest --verbose --dry-run
+# Set DOTNET_INSTALL_DIR
+export DOTNET_INSTALL_DIR=/opt/dotnet
+# Perform actual install, run the script but now without --dry-run:
+curl -sSL https://dot.net/v1/dotnet-install.sh | bash /dev/stdin --version latest --verbose
+# Review the SDK's after installation:
+dotnet --list-sdks
+# Install the Visual Studio Remote Debugger on the SBC
+curl -sSL https://aka.ms/getvsdbgsh | /bin/sh /dev/stdin -v latest -l ~/vsdbg
 
 sudo usermod -a -G input $USER
 
