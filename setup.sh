@@ -56,8 +56,8 @@ sudo raspi-config nonint do_overscan 1
 sudo raspi-config nonint do_camera 0
 
 mkdir -p ~/.branding
-wget -O /home/admin/.branding/splash.png https://raw.githubusercontent.com/devstroop/.branding/master/splash.png
-wget -O /home/admin/.branding/splash.mp4 https://raw.githubusercontent.com/devstroop/.branding/master/splash.mp4
+wget -O ~/.branding/splash.png https://raw.githubusercontent.com/devstroop/.branding/master/splash.png
+wget -O ~/.branding/splash.mp4 https://raw.githubusercontent.com/devstroop/.branding/master/splash.mp4
 
 # Define the content of the new rc.local script
 CLEAR_SCREEN_CONTENT='
