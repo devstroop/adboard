@@ -78,5 +78,5 @@ echo "$SPLASH_CONTENT" | sudo tee /etc/systemd/system/splashscreen.service > /de
 # Set the correct permissions for rc.local
 sudo chmod +x /etc/systemd/system/splashscreen.service
 
-sudo sh -c 'setterm -clear >/dev/tty1 >/dev/tty1'
+sudo sh -c 'setterm -clear >/dev/tty1; echo "Installed Successfully!" >/dev/tty1'
 
