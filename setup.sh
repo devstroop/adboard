@@ -9,7 +9,6 @@ sudo sh -c 'setterm -clear >/dev/tty1; echo "Installing Dependencies..." >/dev/t
 sudo apt-get install -y \
     git \
     ffmpeg \
-    fbi \
     libgl1-mesa-dev \
     libgles2-mesa-dev \
     libegl1-mesa-dev \
