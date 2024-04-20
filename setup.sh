@@ -1,9 +1,10 @@
 #!/bin/bash
 
-sudo sh -c "TERM=linux setterm -clear all >/dev/tty0"
-sudo sh -c 'echo "Installing..." >/dev/tty1'
+sudo sh -c 'setterm -clear >/dev/tty1; echo "Installing..." >/dev/tty1'
 
 sudo apt-get update && sudo apt-get upgrade -y
+
+sudo sh -c 'setterm -clear >/dev/tty1; echo "Installing Dependencies..." >/dev/tty1'
 
 sudo apt-get install -y \
     git \
@@ -20,8 +21,14 @@ sudo apt-get install -y \
     libinput-dev \
     libudev-dev  \
     libxkbcommon-dev
-# 
+    
+sudo sh -c 'setterm -clear >/dev/tty1; echo "Caching Font..." >/dev/tty1'
+
+# Font Cache
 sudo fc-cache -f -v
+
+
+sudo sh -c 'setterm -clear >/dev/tty1; echo "Installing .NET..." >/dev/tty1'
 # Perform dry run and review envvar DOTNET_INSTALL_DIR
 curl -sSL https://dot.net/v1/dotnet-install.sh | bash /dev/stdin --version latest --verbose --dry-run
 # Perform actual install, run the script but now without --dry-run:
@@ -33,8 +40,11 @@ source ~/.bashrc
 # Review the SDK's after installation:
 dotnet --list-sdks
 
+sudo sh -c 'setterm -clear >/dev/tty1; echo "Installing .NET Debugger..." >/dev/tty1'
 # Install the Visual Studio Remote Debugger on the SBC
 curl -sSL https://aka.ms/getvsdbgsh | /bin/sh /dev/stdin -v latest -l ~/vsdbg
+
+sudo sh -c 'setterm -clear >/dev/tty1; echo "Configuring..." >/dev/tty1'
 
 sudo usermod -a -G input $USER
 
@@ -68,5 +78,5 @@ echo "$SPLASH_CONTENT" | sudo tee /etc/systemd/system/splashscreen.service > /de
 # Set the correct permissions for rc.local
 sudo chmod +x /etc/systemd/system/splashscreen.service
 
-sudo sh -c "TERM=linux setterm -foreground white -clear all >/dev/tty0"
+sudo sh -c 'setterm -clear >/dev/tty1 >/dev/tty1'
 
