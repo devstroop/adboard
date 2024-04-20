@@ -30,7 +30,7 @@ sudo fc-cache -f -v
 
 sudo sh -c 'setterm -clear >/dev/tty1; echo "Installing .NET..." >/dev/tty1'
 # Perform dry run and review envvar DOTNET_INSTALL_DIR
-curl -sSL https://dot.net/v1/dotnet-install.sh | bash /dev/stdin --version latest --verbose --dry-run
+# curl -sSL https://dot.net/v1/dotnet-install.sh | bash /dev/stdin --version latest --verbose --dry-run
 # Perform actual install, run the script but now without --dry-run:
 curl -sSL https://dot.net/v1/dotnet-install.sh | bash /dev/stdin --version latest --verbose
 # Set DOTNET_INSTALL_DIR
@@ -55,6 +55,7 @@ sudo raspi-config nonint do_boot_splash 0
 sudo raspi-config nonint do_overscan 1
 sudo raspi-config nonint do_camera 0
 
+mkdir -p ~/.branding
 wget -O /home/admin/.branding/splash.png https://raw.githubusercontent.com/devstroop/.branding/master/splash.png
 wget -O /home/admin/.branding/splash.mp4 https://raw.githubusercontent.com/devstroop/.branding/master/splash.mp4
 
