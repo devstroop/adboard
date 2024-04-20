@@ -60,13 +60,13 @@ wget -O /home/admin/.branding/splash.png https://raw.githubusercontent.com/devst
 wget -O /home/admin/.branding/splash.mp4 https://raw.githubusercontent.com/devstroop/.branding/master/splash.mp4
 
 # Define the content of the new rc.local script
-SPLASH_CONTENT='
+CLEAR_SCREEN_CONTENT='
 [Unit]
-Description=Splash screen
+Description=Clear Screen
 DefaultDependencies=no
 After=local-fs.target
 [Service]
-ExecStart=/usr/bin/fbi -d /dev/fb0 --noverbose -a /home/admin/.branding/splash.png
+ExecStart=sudo sh -c 'setterm -clear >/dev/tty1'
 StandardInput=tty
 StandardOutput=tty
 [Install]
@@ -74,12 +74,12 @@ WantedBy=sysinit.target
 '
 
 # Overwrite the content of rc.local with the new content
-echo "$SPLASH_CONTENT" | sudo tee /etc/systemd/system/splashscreen.service > /dev/null
+echo "$CLEAR_SCREEN_CONTENT" | sudo tee /etc/systemd/system/clear-screen.service > /dev/null
 
 # Set the correct permissions for rc.local
-sudo chmod +x /etc/systemd/system/splashscreen.service
+sudo chmod +x /etc/systemd/system/clear-screen.service
 
-sudo sh -c 'setterm -clear >/dev/tty1; echo "Installed Successfully!" >/dev/tty1'
+sudo sh -c 'setterm -clear >/dev/tty1; echo "Installed Successfully!\nRebooting..." >/dev/tty1'
 
 # Reboot
 sudo reboot
