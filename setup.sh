@@ -19,7 +19,8 @@ sudo apt-get install -y \
     libinput-dev \
     libudev-dev  \
     libxkbcommon-dev
-    
+# 
+sudo fc-cache -f -v
 # Perform dry run and review envvar DOTNET_INSTALL_DIR
 curl -sSL https://dot.net/v1/dotnet-install.sh | bash /dev/stdin --version latest --verbose --dry-run
 # Perform actual install, run the script but now without --dry-run:
