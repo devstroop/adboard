@@ -66,7 +66,7 @@ Description=Splash screen
 DefaultDependencies=no
 After=local-fs.target
 [Service]
-ExecStart=/usr/bin/fbi -d /dev/fb0 --noverbose -a /home/admin/splash.png
+ExecStart=/usr/bin/fbi -d /dev/fb0 --noverbose -a /home/admin/.branding/splash.png
 StandardInput=tty
 StandardOutput=tty
 [Install]
@@ -80,4 +80,7 @@ echo "$SPLASH_CONTENT" | sudo tee /etc/systemd/system/splashscreen.service > /de
 sudo chmod +x /etc/systemd/system/splashscreen.service
 
 sudo sh -c 'setterm -clear >/dev/tty1; echo "Installed Successfully!" >/dev/tty1'
+
+# Reboot
+sudo reboot
 
