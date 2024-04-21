@@ -1,6 +1,7 @@
 # Adboard SDK
 
-## Installation Instructions
+### Installation Instructions
+
 To install the Adboard SDK and its dependencies, follow these steps:
 
 1. First, update and upgrade your system packages by running the following command:
