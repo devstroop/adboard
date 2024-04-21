@@ -37,9 +37,9 @@ install_dotnet() {
     # Perform installation
     curl -sSL https://dot.net/v1/dotnet-install.sh | bash /dev/stdin --version latest --verbose
     # Set environment variables
-    echo 'export DOTNET_ROOT=$HOME/.dotnet' >> ~/.bashrc
-    echo 'export PATH=$PATH:$HOME/.dotnet' >> ~/.bashrc
-    source ~/.bashrc
+    # echo 'export DOTNET_ROOT=$HOME/.dotnet' >> ~/.bashrc
+    # echo 'export PATH=$PATH:$HOME/.dotnet' >> ~/.bashrc
+    # source ~/.bashrc
     # Review installed SDKs
     dotnet --list-sdks
 }
