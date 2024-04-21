@@ -63,20 +63,39 @@ configure_system() {
 }
 
 # Function to set branding
-set_branding() {
-    display_message "Setting branding..."
-    mkdir -p ~/.branding
-    wget -O ~/.branding/splash.png https://raw.githubusercontent.com/devstroop/.branding/master/splash.png
-    wget -O ~/.branding/splash.mp4 https://raw.githubusercontent.com/devstroop/.branding/master/splash.mp4
-}
+# set_branding() {
+#     display_message "Setting branding..."
+#     mkdir -p ~/.branding
+#     wget -O ~/.branding/splash.png https://raw.githubusercontent.com/devstroop/.branding/master/splash.png
+#     wget -O ~/.branding/splash.mp4 https://raw.githubusercontent.com/devstroop/.branding/master/splash.mp4
+# }
+
+PREVIEW_CONTENT='
+[Unit]
+Description=Preview Service
+[Service]
+ExecStart=/usr/bin/ffplay /home/admin/.media/sample1.mp4 -vf "transpose=2" -loop 0
+Restart=always
+[Install]
+WantedBy=multi-user.target
+'
 
 # Function to set up services
 setup_services() {
     display_message "Setting up services..."
-    # Set up clear screen service
-    echo "$CLEAR_SCREEN_CONTENT" | sudo tee /etc/systemd/system/clear-screen.service > /dev/null
-    sudo chmod +x /etc/systemd/system/clear-screen.service
-    # Set up preview service
+    # Preview Service
+    mkdir -p ~/.media
+    wget -O ~/.media/sample1.mp4 https://raw.githubusercontent.com/devstroop/adboard-sdk/master/.media/sample1.mp4
+    cat <<EOF | sudo tee "/etc/systemd/system/app-preview.service" > /dev/null
+[Unit]
+Description=Preview Service
+[Service]
+ExecStart=/usr/bin/ffplay /home/admin/.media/sample1.mp4 -vf "transpose=2" -loop 0
+Restart=always
+[Install]
+WantedBy=multi-user.target
+EOF
+    sudo chmod +x /etc/systemd/system/app-preview.service
     sudo systemctl enable "app-preview.service"
     sudo systemctl start "app-preview.service"
 }
@@ -87,7 +106,7 @@ cache_font
 install_dotnet
 install_debugger
 configure_system
-set_branding
+# set_branding
 setup_services
 
 # Final message
