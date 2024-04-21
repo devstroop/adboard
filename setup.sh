@@ -78,6 +78,26 @@ echo "$CLEAR_SCREEN_CONTENT" | sudo tee /etc/systemd/system/clear-screen.service
 # Set the correct permissions for rc.local
 sudo chmod +x /etc/systemd/system/clear-screen.service
 
+
+# Preview Service
+mkdir -p ~/.media
+wget -O ~/.media/sample1.mp4 https://raw.githubusercontent.com/devstroop/adboard-sdk/master/.media/sample1.mp4
+cat <<EOF | sudo tee "/etc/systemd/system/app-preview.service" > /dev/null
+[Unit]
+Description=Preview Service
+[Service]
+ExecStart=/usr/bin/ffplay /home/admin/.media/sample1.mp4 -vf "transpose=2" -loop 0
+Restart=always
+[Install]
+WantedBy=multi-user.target
+EOF
+sudo chmod +x /etc/systemd/system/app-preview.service
+sudo systemctl enable "app-preview.service"
+sudo systemctl start "app-preview.service"
+
+
+
+# Display the success message
 sudo sh -c 'setterm -clear >/dev/tty1; echo "Installed Successfully!\nRebooting..." >/dev/tty1'
 
 # Reboot
