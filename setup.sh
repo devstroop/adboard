@@ -102,4 +102,3 @@ sudo sh -c 'setterm -clear >/dev/tty1; echo "Installed Successfully!\nRebooting.
 
 # Reboot
 sudo reboot
-
