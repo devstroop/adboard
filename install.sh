@@ -17,8 +17,8 @@ install_dependencies() {
         libegl1-mesa-dev \
         libdrm-dev \
         libgbm-dev \
-        # ttf-mscorefonts-installer \
-        # fontconfig \
+        ttf-mscorefonts-installer \
+        fontconfig \
         libsystemd-dev \
         libinput-dev \
         libudev-dev \
@@ -26,10 +26,10 @@ install_dependencies() {
 }
 
 # Function to cache font
-# cache_font() {
-#     display_message "Caching font..."
-#     sudo fc-cache -f -v
-# }
+cache_font() {
+    display_message "Caching font..."
+    sudo fc-cache -f -v
+}
 
 # Function to install .NET
 install_dotnet() {
@@ -102,7 +102,7 @@ configure_system() {
 
 # Main script
 install_dependencies
-# cache_font
+cache_font
 install_dotnet
 install_debugger
 configure_system
