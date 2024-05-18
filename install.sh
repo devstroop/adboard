@@ -37,9 +37,9 @@ install_dotnet() {
     # Perform installation
     curl -sSL https://dot.net/v1/dotnet-install.sh | bash /dev/stdin --version latest --verbose
     # Set environment variables
-    # echo 'export DOTNET_ROOT=$HOME/.dotnet' >> ~/.bashrc
-    # echo 'export PATH=$PATH:$HOME/.dotnet' >> ~/.bashrc
-    # source ~/.bashrc
+    echo 'export DOTNET_ROOT=$HOME/.dotnet' >> ~/.bashrc
+    echo 'export PATH=$PATH:$HOME/.dotnet' >> ~/.bashrc
+    source ~/.bashrc
     # Review installed SDKs
     dotnet --list-sdks
 }
@@ -74,7 +74,7 @@ configure_system() {
 # [Unit]
 # Description=Preview Service
 # [Service]
-# ExecStart=/usr/bin/ffplay /home/admin/.media/sample1.mp4 -vf "transpose=2" -loop 0
+# ExecStart=/usr/bin/ffplay /home/admin/sample.mp4 -vf "transpose=2" -loop 0
 # Restart=always
 # [Install]
 # WantedBy=multi-user.target
