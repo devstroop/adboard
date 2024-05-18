@@ -17,8 +17,8 @@ install_dependencies() {
         libegl1-mesa-dev \
         libdrm-dev \
         libgbm-dev \
-        ttf-mscorefonts-installer \
-        fontconfig \
+        # ttf-mscorefonts-installer \
+        # fontconfig \
         libsystemd-dev \
         libinput-dev \
         libudev-dev \
