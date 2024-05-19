@@ -11,5 +11,9 @@ sudo apt-get update && sudo apt-get upgrade -y
 
 2. Next, use the following command to install the SDK along with its dependencies:
 ```
-curl -sSL https://raw.githubusercontent.com/devstroop/adboard-sdk/master/install.sh | sh
+curl -sSL https://raw.githubusercontent.com/devstroop/adboard-sdk/master/v1.sh | sh
+```
+or,
+```
+curl -sSL https://raw.githubusercontent.com/devstroop/adboard-sdk/master/v2.sh | sh
 ```
