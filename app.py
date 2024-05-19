@@ -20,6 +20,13 @@ async def play_advertisement(session, advertisement, pipeline):
     pipeline.get_by_name('playbin').set_property('uri', uri)
     pipeline.set_state(Gst.State.PLAYING)
 
+    # Add a delay to give the pipeline time to start playing
+    await asyncio.sleep(1)
+
+    # Check pipeline state
+    state = pipeline.get_state(Gst.CLOCK_TIME_NONE)
+    print(f"Pipeline state after PLAYING: {state}")
+
 
 async def main():
     Gst.init(None)
