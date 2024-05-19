@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # List of video URIs
-videos=("https://cdn.hallads.com/sample7.mp4" "https://cdn.hallads.com/sample8.mp4")
+videos=("https://cdn.hallads.com/sample7.mp4" "https://cdn.hallads.com/admin/10sdku5v.mp4")
 
 # Function to play a video
 play_video() {
