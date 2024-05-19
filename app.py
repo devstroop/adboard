@@ -17,7 +17,7 @@ async def play_advertisement(session, advertisement, pipeline):
     uri = f"https://cdn.hallads.com/{advertisement['AttachmentKey']}"
     print(f"Playing advertisement: {uri}")
     pipeline.set_state(Gst.State.NULL)
-    pipeline = Gst.parse_launch(f"playbin uri={uri}")
+    pipeline.get_by_name('playbin').set_property('uri', uri)
     pipeline.set_state(Gst.State.PLAYING)
 
 
