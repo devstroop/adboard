@@ -9,13 +9,19 @@ play_advertisement() {
 # Function to fetch advertisements from the server
 fetch_ads() {
     local url="http://doohfy.com/odata/DOOHDB/Advertisements"
-    curl -s "$url" | jq -r '.value[] | .AttachmentKey'
+    curl -s "$url" | jq -r '.value[].AttachmentKey' || echo ""
 }
 
 # Main loop
 while true; do
     # Fetch advertisements
     ads=$(fetch_ads)
+
+    # Check if ads are fetched successfully
+    if [ -z "$ads" ]; then
+        echo "Error fetching advertisements"
+        continue
+    fi
 
     # Play each advertisement
     for ad in $ads; do
