@@ -11,13 +11,14 @@ async def fetch_ads(session):
         return await response.json()
 
 async def play_advertisement(session, advertisement):
-    pipeline = Gst.parse_launch("playbin uri=''")
-    pipeline.set_state(Gst.State.NULL)
+    pipeline = Gst.Pipeline()
+    playbin = Gst.ElementFactory.make("playbin", "playbin")
+    pipeline.add(playbin)
 
     uri = f"https://cdn.hallads.com/{advertisement['AttachmentKey']}"
     print(f"Playing advertisement: {uri}")
 
-    pipeline.get_by_name('playbin').set_property('uri', uri)
+    playbin.set_property('uri', uri)
     pipeline.set_state(Gst.State.PLAYING)
 
     # Monitor pipeline state until the advertisement finishes playing
