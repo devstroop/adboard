@@ -11,6 +11,7 @@ install_dependencies() {
     sudo apt-get update && sudo apt-get upgrade -y
     sudo apt-get install -y \
         git \
+        libvlc-dev
         libgl1-mesa-dev \
         libgles2-mesa-dev \
         libegl1-mesa-dev \
@@ -22,17 +23,6 @@ install_dependencies() {
         libinput-dev \
         libudev-dev \
         libxkbcommon-dev
-    sudo apt install -y \
-        gstreamer1.0* \
-        libgstreamer1.0-dev \
-        libgstreamer-plugins-base1.0-dev \
-        libgstreamer-plugins-bad1.0-dev \
-        gstreamer1.0-plugins-base \
-        gstreamer1.0-plugins-good \
-        gstreamer1.0-plugins-ugly \
-        gstreamer1.0-plugins-bad \
-        gstreamer1.0-libav \
-        gstreamer1.0-alsa
 }
 
 # Function to cache font
