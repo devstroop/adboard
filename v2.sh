@@ -11,6 +11,7 @@ install_dependencies() {
     sudo apt-get update && sudo apt-get upgrade -y
     sudo apt-get install -y \
         git \
+        vlc \
         libvlc-dev
         libgl1-mesa-dev \
         libgles2-mesa-dev \
